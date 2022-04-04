@@ -1,20 +1,7 @@
-import axios from 'axios'
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import './CovidTable.css'
 
-const CovidTable = () => {
-    const [covidData, setcovidData] = useState("");
-    const fetchStateData = () =>{
-        axios.get('https://www.mohfw.gov.in/data/datanew.json').then(resp=>{
-            const fetchedData = resp.data;
-            // console.log(resp.data);
-            setcovidData(fetchedData);
-        })
-    }
-useEffect(()=>{
-    fetchStateData();
-    // console.log(covidData);
-}, []);
+const CovidTable = (props) => {
   return (
     <div className="container-fluid mt-5">
     <div className='main-heading'>
@@ -35,7 +22,7 @@ useEffect(()=>{
     </tr>
   </thead>
   <tbody>
-    {covidData?(covidData.map((data) => (
+    {props.data?(props.data.map((data) => (
         <tr key={data.sno}>
       {data.state_name===""?<th scope="row">Total</th>:<th scope="row">{data.state_name}</th>}
       <td>{data.positive}</td>
