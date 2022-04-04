@@ -9,8 +9,13 @@ const Cards = (props) => {
   }
   return (
     <div className="container">
+      <div className="main-heading">
+        <h1 className="mb-5 text-center">
+          <span className="font-weight-bold">COVID</span> STATS
+        </h1>
+      </div>
       <Grid container spacing={3} justifyContent="center">
-        <Grid item component={Card}>
+        <Grid item component={Card} xs={12} md={3} className="card infected">
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Infected
@@ -30,7 +35,7 @@ const Cards = (props) => {
             <Typography variant="body2">Total Covid Cases</Typography>
           </CardContent>
         </Grid>
-        <Grid item component={Card}>
+        <Grid item component={Card} xs={12} md={3} className="card deaths">
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Deaths
@@ -49,7 +54,7 @@ const Cards = (props) => {
             <Typography variant="body2">Number of Deaths till date</Typography>
           </CardContent>
         </Grid>
-        <Grid item component={Card}>
+        <Grid item component={Card} xs={12} md={3} className="card recovered">
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Recovered
