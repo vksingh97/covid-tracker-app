@@ -1,5 +1,5 @@
 import './App.css';
-import {CovidTable, Chart, StatePicker, Cards} from './components';
+import {CovidTable, Cards} from './components';
 import { fetchData } from './api'
 import { useEffect, useState } from 'react';
 
@@ -12,9 +12,7 @@ function App() {
   },[])
   return (
     <div className="container">
-    <Cards />
-    <StatePicker />
-    <Chart />
+    <Cards data={covidData}/>
     <CovidTable data={covidData}/>
     </div>
   );
