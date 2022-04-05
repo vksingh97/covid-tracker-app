@@ -3,39 +3,38 @@ import "./CovidTable.css";
 
 const CovidTable = (props) => {
   const [data, setdata] = useState("");
-  const [order, setOrder] = useState("ASC");
+  const [order, setOrder] = useState("");
   const sorting = (col) => {
     if (order === "ASC") {
-      const sorted = [...props.data].sort((a, b) =>
-        a[col].toLowerCase() > b[col].toLowerCase ? 1 : -1
-      );
+      const sorted = [...data].sort((a, b) => (a[col] > b[col] ? 1 : -1));
       setdata(sorted);
       setOrder("DSC");
     }
     if (order === "DSC") {
-      const sorted = [...props.data].sort((a, b) =>
-        a[col].toLowerCase() < b[col].toLowerCase ? 1 : -1
-      );
+      const sorted = [...data].sort((a, b) => (a[col] < b[col] ? 1 : -1));
       setdata(sorted);
       setOrder("ASC");
     }
   };
   useEffect(() => {
     setdata(props.data);
+    setOrder("ASC");
   }, [props.data]);
   return (
     <div className="container-fluid mt-5">
       <div className="main-heading">
+        {/* {console.log(data)} */}
         <h1 className="mb-5 text-center">
           <span className="font-weight-bold">INDIA</span> COVID-19 CASES
         </h1>
       </div>
-      {console.log(data)}
       <div className="table-responsive">
         <table className="table table-hover">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">Name of State/UT</th>
+              <th scope="col" onClick={() => sorting("state_name")}>
+                Name of State/UT
+              </th>
               <th scope="col" onClick={() => sorting("positive")}>
                 Total
               </th>
