@@ -32,6 +32,7 @@ const Charts = (props) => {
         text: "Covid Cases based on States",
       },
     },
+    // maintainAspectRatio: false,
   };
 
   const labels = covidData
@@ -46,7 +47,7 @@ const Charts = (props) => {
       {
         label: "No. of covid cases",
         data: covidData ? covidData.map((item) => item.positive) : "null",
-        backgroundColor: "rgba(255, 0, 0, 0.5)",
+        backgroundColor: "rgba(0, 0, 255, 0.8)",
       },
     ],
   };
@@ -55,7 +56,15 @@ const Charts = (props) => {
   }, [props.data]);
   return (
     <div>
-      <Bar options={options} data={data} height={400} width={600}></Bar>
+      <div className="container-fluid mt-5">
+        <div className="main-heading">
+          <h1 className="mb-5 text-center">
+            <span className="font-weight-bold">BAR REPRESENTATION</span>
+          </h1>
+        </div>
+      </div>
+
+      <Bar options={options} data={data} width={800} height={500}></Bar>
     </div>
   );
 };
