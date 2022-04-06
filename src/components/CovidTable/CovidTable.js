@@ -17,7 +17,7 @@ const CovidTable = (props) => {
     }
   };
   useEffect(() => {
-    setdata(props.data);
+    setdata(props.data.slice(0, -1));
     setOrder("ASC");
   }, [props.data]);
   return (
